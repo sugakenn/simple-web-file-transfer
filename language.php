@@ -31,7 +31,7 @@ function lang_jp() {
     $GLOBALS['messages']['ajax-ok']=' 成功';
     $GLOBALS['messages']['ajax-ng']=' 失敗';
     $GLOBALS['messages']['ajax-no-file']=' ファイルがありませんでした';
-
+    $GLOBALS['messages']['ajax-ng-dir']=' アップロードフォルダ作成に失敗しました';
 }
 
 function lang_en() {
@@ -48,6 +48,7 @@ function lang_en() {
     $GLOBALS['messages']['ajax-ok']=' succeed';
     $GLOBALS['messages']['ajax-ng']=' failed !';
     $GLOBALS['messages']['ajax-no-file']='file does not exist';
+    $GLOBALS['messages']['ajax-ng-dir']=' fail to make upload dir';
 
 }
 
