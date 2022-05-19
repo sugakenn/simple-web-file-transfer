@@ -20,6 +20,16 @@
 			ul {
 				list-style: none;
 			}
+			.wait::after {
+				font-size: 150%;
+				content:'\0262F';
+				display: inline-block;
+				animation: rotate-anime 3s linear infinite;
+			}		
+			@keyframes rotate-anime {
+				0%  {transform: rotate(0);}
+				100%  {transform: rotate(360deg);}
+			}
 		</style>
 	</head>
 	<body>
@@ -35,6 +45,7 @@
 		</ul>
 		<div>
 		<button style="width:10em;font-size:100%;" onclick="sendFiles()"><?php echo $GLOBALS['messages']['upload-page-send']; ?></button>
+		<span id="wait">&nbsp;</span>
 		</div>
 		<div id="message">
 		</div>
@@ -94,8 +105,22 @@
 
 			return reg.test(strFileName.toLowerCase());
 		}
+		function setLoading(bln){
+			let el = document.getElementById('wait');
+			let buttons = document.getElementsByTagName('button');
+
+			el.classList.remove('wait');
+			if(bln){
+				el.classList.add('wait');
+			}
+
+			for(let i = 0; i < buttons.length; i++){
+				buttons[i].disabled = bln;
+			}
+		}
 		async function sendFiles() {
   			let formData = new FormData();
+			setLoading(true);
 
 			for (let i = 0; i < targetFiles.length; i++) {
   				formData.append("uploadfiles[]", targetFiles[i]);
@@ -105,7 +130,7 @@
 				method: "POST", 
 				body: formData
 			})
-			.then(response=> {console.log(response); return response.json();})
+			.then(response=> {setLoading(false); return response.json();})
 			.then(data => {
 				if (data.result==true) {
 					message.innerHTML=data.message;
