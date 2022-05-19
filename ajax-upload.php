@@ -5,6 +5,18 @@
 	//アップロードフォルダ指定
 	define('UPLOAD_DIR','./uploads');
 	
+
+	if (is_dir(UPLOAD_DIR)==false) {
+		if (mkdir(UPLOAD_DIR)==false) {
+			$ret=array();
+			$ret['result']=false;
+			$ret['message']=$GLOBALS['messages']['ajax-ng-dir'];
+		
+			echo json_encode($ret);
+			exit;
+		}
+	}
+
 	$strMsg="";
 	$strFiles="";
 	$intCnt=0;

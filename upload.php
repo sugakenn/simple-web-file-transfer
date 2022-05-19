@@ -72,20 +72,27 @@
 
 					let br = document.createElement('br');
 					li.appendChild(br);
-					let img = document.createElement('img');
-					li.appendChild(img);
+
+					if (preview(event.target.files[i].name)){
+						let img = document.createElement('img');
+						li.appendChild(img);
+
+						let fileReader = new FileReader();
+						fileReader.onload = function(_) {
+							img.src = fileReader.result;
+						};
+						fileReader.readAsDataURL(event.target.files[i]);
+					}
 					fileList.appendChild(li);
-
 					targetFiles.push(event.target.files[i]);
-
-					let fileReader = new FileReader();
-					fileReader.onload = function(_) {
-						img.src = fileReader.result;
-					};
-					fileReader.readAsDataURL(event.target.files[i]);
 				}
 
 			}
+		}
+		function preview(strFileName){
+			let reg = new RegExp(/.*(\.jpg|\.jpeg|\.png|\.svg|\.gif)$/);
+
+			return reg.test(strFileName.toLowerCase());
 		}
 		async function sendFiles() {
   			let formData = new FormData();
@@ -98,7 +105,7 @@
 				method: "POST", 
 				body: formData
 			})
-			.then(response=> response.json())
+			.then(response=> {console.log(response); return response.json();})
 			.then(data => {
 				if (data.result==true) {
 					message.innerHTML=data.message;
