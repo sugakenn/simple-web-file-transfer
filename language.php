@@ -1,13 +1,13 @@
 <?php
 
 //language setting
-$GLOBALS['lang']='en';//other en
+$GLOBALS['lang']='ja';//en,ja
 
 selectLang();
 
 function selectLang() {
     switch($GLOBALS['lang']) {
-    case 'jp':
+    case 'ja':
         lang_jp();
         break;
     case 'en':
