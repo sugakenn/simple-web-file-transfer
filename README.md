@@ -11,7 +11,7 @@
   <li>Apache Server(or other web server with PHP)
 </ol>
 <h3>Install</h3>
-<p>Copy all from root dir to htdocs or htdocs child folder</p>
+<p>Copy all from root dir to htdocs or htdocs's child folder.(if use Apache Server)</p>
 
 <h3>Settings</h3>
 <ol>
