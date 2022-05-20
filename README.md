@@ -37,8 +37,8 @@
 <ol>
 <li>Show page http://localhost/index.php on Web Server PC.
 <li>Scan the QR Code with client.(Tablet, iPhone, Android...)
-<li>Select File
-<li>click the "upload" button
+<li>Select Files from "select" button.
+<li>click the "upload" button.
 </ol>
 
 <p>
