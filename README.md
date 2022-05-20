@@ -35,7 +35,7 @@
    
 <h3>Usage</h3>
 <ol>
-<li>Show page http://localhost/index.php on Web Server PC.
+<li>Show page [http://localhost/index.php] on Web Server PC.
 <li>Scan the QR Code with client.(Tablet, iPhone, Android...)
 <li>Select Files from "select" button.
 <li>click the "upload" button.
